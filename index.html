@@ -534,15 +534,12 @@
         <p class="eyebrow reveal">Chat Reading</p>
         <h2 id="chat-title" class="reveal" data-delay="1">chat占い</h2>
         <span class="free-badge reveal" data-delay="1">無料</span>
-        <p class="lead reveal" data-delay="2">Threadsのリプライで、<br>無料の鑑定を受け付けています。</p>
-        <p class="reveal" data-delay="2">気になることがあれば、Threadsの投稿へリプライでお寄せください。</p>
-        <form class="chat-form reveal" data-delay="3" id="chatForm">
-          <label>お名前（任意）<input type="text" id="cf-name" autocomplete="name" placeholder="例：あかり"></label>
-          <label>生年月日<input type="date" id="cf-birth"></label>
-          <label>ご相談<textarea id="cf-msg" rows="3" placeholder="気になっていることを書いてください"></textarea></label>
-          <button type="button" class="btn btn-gold" id="cf-send"><svg aria-hidden="true"><use href="#i-chat"/></svg>文章をコピーしてThreadsを開く</button>
-          <p class="offer-sub">Threadsの投稿に、コピーした文章を貼ってリプライしてください。ルナが星を読んで、お返事します。</p>
-        </form>
+        <p class="lead reveal" data-delay="2">このページで、<br>そのままルナとお話しできます。</p>
+        <p class="reveal" data-delay="2">お名前と生年月日を入れて、気になることを送ってください。ルナが星を読んで、その場でお返事します。</p>
+        <div class="reveal" data-delay="3">
+          <iframe src="https://luna-chat-app.godo-nine-9.workers.dev" title="ルナ チャット占い" loading="lazy" style="width:100%;height:680px;border:1px solid var(--glass-line);border-radius:16px;background:rgba(255,255,255,.03)"></iframe>
+          <p class="offer-sub">チャットが表示されない場合は<a href="https://luna-chat-app.godo-nine-9.workers.dev" target="_blank" rel="noopener">こちらから開けます</a></p>
+        </div>
       </div>
       <div class="bubbles">
         <div class="bubble you reveal"><small>YOU</small>転職しようか、ずっと迷っています</div>
@@ -738,22 +735,6 @@
     });
   }
 })();
-</script>
-<script>
-document.getElementById('cf-send').addEventListener('click', function(){
-  var name = document.getElementById('cf-name').value.trim();
-  var birth = document.getElementById('cf-birth').value;
-  var msg = document.getElementById('cf-msg').value.trim();
-  var lines = ['【無料鑑定のお願い】'];
-  if (name) lines.push('お名前：' + name);
-  if (birth) lines.push('生年月日：' + birth);
-  if (msg) lines.push('相談：' + msg);
-  var text = lines.join('\n');
-  function openThreads(){ window.open('https://www.threads.net/@luna_kakomirai', '_blank'); }
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(openThreads, openThreads);
-  } else { openThreads(); }
-});
 </script>
 </body>
 </html>
