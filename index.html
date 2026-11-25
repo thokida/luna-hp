@@ -120,8 +120,9 @@
   }
   .btn-gold{
     color:#1a1407;
-    background:linear-gradient(135deg,var(--gold-300) 0%, var(--gold-500) 45%, var(--gold-600) 100%);
-    box-shadow:0 10px 30px -8px rgba(212,178,106,.55), inset 0 1px 0 rgba(255,255,255,.6);
+    min-height:68px;padding:0 44px;font-size:19px;letter-spacing:.14em;
+    background:linear-gradient(135deg,#f8ecc6 0%, var(--gold-300) 22%, var(--gold-400) 55%, var(--gold-600) 100%);
+    box-shadow:0 12px 34px -8px rgba(212,178,106,.6), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -2px 0 rgba(120,88,30,.25);
   }
   .btn-gold::after{
     content:"";position:absolute;inset:0;z-index:-1;
@@ -156,11 +157,18 @@
   .hero-media::after{
     content:"";position:absolute;inset:0;
     background:
-      linear-gradient(180deg, rgba(7,13,34,.35) 0%, rgba(7,13,34,0) 22%, rgba(7,13,34,0) 42%, rgba(7,13,34,.75) 72%, var(--navy-900) 100%);
+      linear-gradient(180deg, rgba(7,13,34,.35) 0%, rgba(7,13,34,0) 20%, rgba(7,13,34,.25) 36%, rgba(7,13,34,.72) 56%, rgba(7,13,34,.9) 78%, var(--navy-900) 100%);
   }
-  .hero-inner{padding:0 0 calc(64px + env(safe-area-inset-bottom));text-align:center}
+  .hero-inner{position:relative;padding:0 0 calc(64px + env(safe-area-inset-bottom));text-align:center}
+  .hero-inner::before{
+    content:"";position:absolute;z-index:-1;left:50%;bottom:0;width:min(130%,900px);height:120%;
+    transform:translateX(-50%);pointer-events:none;
+    background:radial-gradient(closest-side, rgba(7,13,34,.78), rgba(7,13,34,.45) 60%, transparent);
+    filter:blur(10px);
+  }
   .hero-kicker{
-    font-family:var(--serif);font-size:13px;letter-spacing:.42em;color:var(--gold-300);
+    font-family:var(--serif);font-size:15px;font-weight:600;letter-spacing:.3em;color:var(--gold-300);
+    text-shadow:0 2px 14px rgba(0,0,0,.8);
     margin:0 0 14px;opacity:0;animation:fadeUp 1.2s .5s var(--ease) forwards;
   }
   .hero h1{
@@ -237,11 +245,13 @@
   .daily-date{font-size:20px;color:var(--gold-300);letter-spacing:.08em;margin:4px 0 10px}
   .daily-intro{font-size:14px;line-height:1.9;color:var(--ink-mute);max-width:560px;margin:0 auto 22px}
   .daily-list{list-style:none;margin:0 0 22px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;text-align:left}
-  .daily-list li{display:flex;align-items:baseline;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+  .daily-list li{position:relative;display:flex;align-items:baseline;gap:8px;padding:12px 28px 12px 14px;border-radius:12px;background:linear-gradient(160deg,#14275c 0%,#0b1636 100%);border:1px solid rgba(212,178,106,.55);box-shadow:inset 0 0 0 3px rgba(5,10,26,.55), inset 0 0 0 4px rgba(212,178,106,.14)}
+  .daily-list li::after{content:"✦";position:absolute;top:6px;right:9px;font-size:10px;line-height:1;color:var(--gold-500);opacity:.85}
+  .daily-name::after{content:"✦";margin-left:8px;font-size:8px;font-weight:400;color:var(--gold-500);vertical-align:middle}
   .daily-glyph{color:var(--gold-400);font-size:15px}
   .daily-name{color:var(--gold-300);font-weight:700;font-size:14px;white-space:nowrap}
-  .daily-text{font-size:13.5px;line-height:1.6}
-  .daily-advice{font-size:14.5px;line-height:1.8;background:rgba(230,201,135,.07);border:1px solid var(--glass-line);border-radius:14px;padding:14px 16px;margin:0 0 26px}
+  .daily-text{font-size:13.5px;line-height:1.6;color:var(--ink)}
+  .daily-advice{font-size:14.5px;line-height:1.8;background:linear-gradient(160deg,#14275c 0%,#0b1636 100%);border:1px solid rgba(212,178,106,.55);border-radius:14px;padding:14px 16px;margin:0 0 26px}
   .daily-advice span{display:block;color:var(--gold-300);font-size:12.5px;letter-spacing:.14em;margin-bottom:4px}
   @media (max-width:640px){.daily-list{grid-template-columns:1fr}}
   .chat-form{display:grid;gap:12px;margin-top:24px;text-align:left}
@@ -305,8 +315,78 @@
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .price-note{font-size:13px;color:var(--ink-mute);margin-bottom:26px}
-  .offer .btn-gold{width:100%;max-width:420px;min-height:66px;font-size:18px}
+  .offer .btn-gold{width:100%;max-width:420px;min-height:70px;font-size:19px}
   .offer-sub{font-size:13px;color:var(--ink-mute);margin-top:16px}
+
+  /* ---------- 5b. LINE登録ブロック / 年間鑑定書 / 比較（JOB-CC-47） ---------- */
+  .line-block{padding:36px 24px;margin:0 auto;max-width:760px;text-align:center;scroll-margin-top:24px}
+  .line-block h3{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(22px,5.6vw,30px);line-height:1.6;letter-spacing:.08em;margin:0 0 18px;
+    background:linear-gradient(180deg,#fff 0%, var(--gold-300) 120%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .line-reasons{list-style:none;margin:0 auto 28px;padding:0;display:grid;gap:8px;max-width:460px;text-align:left}
+  .line-reasons li{display:flex;gap:10px;align-items:baseline;font-size:15px;line-height:1.8;color:var(--ink-soft)}
+  .line-reasons li::before{content:"✦";color:var(--gold-400);flex:none}
+  .line-block .btn-gold{width:100%;max-width:420px}
+  .line-note{max-width:520px;margin:-8px auto 28px;font-size:14px;line-height:1.9;color:var(--ink-mute);text-align:left}
+  .line-bridge{margin-top:18px}
+  .line-bridge a{color:var(--gold-300)}
+  .line-gap{height:56px}
+  .compare{display:grid;gap:12px;margin:0 auto 32px;max-width:1000px;padding:0;list-style:none}
+  .compare li{padding:20px 22px;text-align:left;line-height:1.7}
+  .compare .c-price{display:block;font-family:var(--serif);font-size:22px;color:var(--gold-300);letter-spacing:.06em}
+  .compare .c-role{display:block;font-size:15px;color:var(--ink-soft);margin-top:4px}
+  .compare .c-meta{display:block;font-size:12px;color:var(--ink-mute);letter-spacing:.1em}
+  .offer-annual{margin-top:0}
+  .offer-pair{display:grid;gap:32px;max-width:1000px;margin-inline:auto}
+  .offer-pair .offer-card{margin:0;max-width:none}
+  .offer-fit{margin:0 0 24px;text-align:left;padding:16px 18px;border:1px solid var(--glass-line);border-radius:14px;background:rgba(10,18,45,.6)}
+  .offer-fit-h{margin:0 0 6px;font-size:12px;letter-spacing:.24em;color:var(--gold-400)}
+  .offer-fit ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+  .offer-fit li{display:flex;gap:8px;align-items:baseline;font-size:14px;line-height:1.7;color:var(--ink-soft)}
+  .offer-fit li::before{content:"✦";color:var(--gold-500);flex:none;font-size:10px}
+  .offer-closing{font-size:14px;line-height:1.9;color:var(--ink-mute);margin:0 0 26px;text-align:left}
+  .offer-media.portrait img{aspect-ratio:4/5;object-position:50% 40%}
+  .btn[aria-disabled="true"]{opacity:.65;cursor:not-allowed;pointer-events:none;filter:saturate(.7)}
+  @media (min-width:760px){
+    .compare{grid-template-columns:repeat(2,1fr)}
+    .offer-media.portrait img{aspect-ratio:auto}
+    .line-block{padding:48px 56px}
+    .offer-pair{grid-template-columns:repeat(2,1fr);gap:28px;align-items:stretch}
+    .offer-pair .offer-card{display:flex;flex-direction:column}
+    .offer-pair .offer-media img,.offer-pair .offer-media.portrait img{height:auto;aspect-ratio:3/2;object-position:50% 35%}
+    .offer-pair .offer-media::after{background:linear-gradient(180deg,transparent 45%,rgba(9,16,40,.92) 100%)}
+    .offer-pair .offer-body{flex:1;margin-top:-56px;padding:8px 28px 36px;text-align:center}
+    .offer-pair .offer-title{min-height:3.2em}
+    .offer-pair .offer-copy{min-height:6em;font-size:17px}
+    .offer-pair .btn-gold{margin-top:auto;align-self:stretch}
+  }
+
+  /* ---------- 5c. 収益枠（JOB-CC-49）：鑑定書カードより一段静かな見た目 ---------- */
+  .aff-group{display:grid;gap:16px;max-width:1000px;margin:56px auto 0}
+  .aff-card{
+    padding:26px 22px;text-align:center;
+    background:linear-gradient(160deg,rgba(19,33,77,.55),rgba(7,13,34,.7));
+    border:1px solid rgba(230,201,135,.18);
+    border-radius:16px;
+  }
+  .aff-card h3{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(18px,4.6vw,21px);line-height:1.6;letter-spacing:.08em;
+    margin:0 0 12px;color:var(--gold-300);
+  }
+  .aff-card p.aff-copy{font-size:14.5px;line-height:1.9;color:var(--ink-soft);margin:0 auto 18px;max-width:560px;text-align:left}
+  .aff-card .btn{min-height:48px;padding:0 24px;font-size:15px;letter-spacing:.1em;max-width:100%;text-align:center}
+  .aff-card .btn-ghost{border-color:rgba(230,201,135,.35)}
+  .aff-pr{font-size:11.5px;line-height:1.6;letter-spacing:.04em;color:var(--ink-mute);margin:14px 0 0}
+  .aff-pr::before{content:"PR";display:inline-block;margin-right:8px;padding:0 6px;border:1px solid rgba(142,152,184,.5);border-radius:4px;font-size:10px;letter-spacing:.1em}
+  @media (min-width:760px){
+    .aff-group{grid-template-columns:repeat(2,1fr);gap:20px;align-items:stretch}
+    .aff-card{display:flex;flex-direction:column;align-items:center;padding:30px 28px}
+    .aff-card .btn{margin-top:auto}
+  }
 
   /* ---------- 6. リンク集 ---------- */
   .links-grid{
@@ -392,6 +472,7 @@
     body{font-size:16px}
     .wrap{width:min(100% - 36px,1080px)}
     .zodiac li span{font-size:19px}
+    .btn-gold{padding:0 28px;font-size:17px}
     .specs .v{font-size:15px}
   }
 
@@ -536,6 +617,7 @@
         <span class="free-badge reveal" data-delay="1">無料</span>
         <p class="lead reveal" data-delay="2">このページで、<br>そのままルナとお話しできます。</p>
         <p class="reveal" data-delay="2">お名前と生年月日を入れて、気になることを送ってください。ルナが星を読んで、その場でお返事します。</p>
+        <p class="reveal line-bridge" data-delay="2">もっと深く自分の星を知りたいときは、<a href="#line-chat">LINEの無料ミニ鑑定</a>へお越しください。星座と「2027年に一番叶えたいこと」を送ると、ペンタステラ星秘術で読み解いた言葉をお届けします。</p>
         <div class="reveal" data-delay="3">
           <iframe src="https://luna-chat-app.godo-nine-9.workers.dev" title="ルナ チャット占い" loading="lazy" style="width:100%;height:680px;border:1px solid var(--glass-line);border-radius:16px;background:rgba(255,255,255,.03)"></iframe>
           <p class="offer-sub">チャットが表示されない場合は<a href="https://luna-chat-app.godo-nine-9.workers.dev" target="_blank" rel="noopener">こちらから開けます</a></p>
@@ -547,15 +629,59 @@
         <p class="offer-sub reveal" data-delay="3">やり取りのイメージです</p>
       </div>
     </div>
+
+    <!-- LINE登録ブロック（chat占いの下部） -->
+    <div class="wrap" style="margin-top:72px">
+      <div class="glass line-block reveal" id="line-chat">
+        <h3>星読みのルナとLINEでつながる</h3>
+        <ul class="line-reasons">
+          <li>ペンタステラ星秘術による無料ミニ鑑定をお届けします</li>
+          <li>星座と「2027年に一番叶えたいこと」を送ると、星からの言葉が届きます</li>
+          <li>鑑定書や年間鑑定書のご案内も、LINEからスムーズに確認できます</li>
+        </ul>
+        <p class="line-note">登録後に届くメッセージへ、あなたの「星座」と「2027年に一番叶えたいこと」を返信してください。ペンタステラ星秘術で読み解いたミニ鑑定をお送りします。</p>
+        <a class="btn btn-gold" href="https://line.me/R/ti/p/@408lstfr" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-chat"/></svg>LINEで無料ミニ鑑定を受け取る
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- 5. 鑑定書のご案内 -->
   <section class="offer" id="offer" aria-labelledby="offer-title">
     <div class="wrap">
+      <!-- LINE登録ブロック（鑑定書のご案内の上部） -->
+      <div class="glass line-block reveal" id="line-offer">
+        <h3>星読みのルナとLINEでつながる</h3>
+        <ul class="line-reasons">
+          <li>ペンタステラ星秘術による無料ミニ鑑定をお届けします</li>
+          <li>星座と「2027年に一番叶えたいこと」を送ると、星からの言葉が届きます</li>
+          <li>鑑定書や年間鑑定書のご案内も、LINEからスムーズに確認できます</li>
+        </ul>
+        <p class="line-note">登録後に届くメッセージへ、あなたの「星座」と「2027年に一番叶えたいこと」を返信してください。ペンタステラ星秘術で読み解いたミニ鑑定をお送りします。</p>
+        <a class="btn btn-gold" href="https://line.me/R/ti/p/@408lstfr" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-chat"/></svg>LINEで無料ミニ鑑定を受け取る
+        </a>
+      </div>
+      <div class="line-gap" aria-hidden="true"></div>
+
       <div class="center" style="margin-bottom:40px">
         <p class="eyebrow reveal">Reading Report</p>
         <h2 class="reveal" data-delay="1">鑑定書のご案内</h2>
       </div>
+      <ul class="compare reveal" data-delay="1" aria-label="鑑定書の比較">
+        <li class="glass">
+          <span class="c-meta">基本の鑑定書 ・ PDF 32ページ前後</span>
+          <span class="c-price">¥5,000</span>
+          <span class="c-role">今のテーマや人生の土台を深く知る基本の鑑定書</span>
+        </li>
+        <li class="glass">
+          <span class="c-meta">年間鑑定書 ・ PDF 45〜55ページ</span>
+          <span class="c-price">¥15,000</span>
+          <span class="c-role">1年間の流れと月ごとの転機を見通す保存版</span>
+        </li>
+      </ul>
+      <div class="offer-pair">
       <article class="glass offer-card reveal" data-delay="2">
         <div class="offer-media">
           <img src="luna-backview-v10.jpg" alt="満月を見上げるルナの後ろ姿" width="1920" height="1280" loading="lazy">
@@ -569,12 +695,71 @@
           </ul>
           <p class="price">¥5,000</p>
           <p class="price-note">ペンタステラ星秘術 鑑定書（PDF）</p>
+          <div class="offer-fit">
+            <p class="offer-fit-h">向いている方</p>
+            <ul>
+              <li>今の悩みや迷いを整理したい方</li>
+              <li>まずはペンタステラ星秘術の全体像を知りたい方</li>
+            </ul>
+          </div>
           <a class="btn btn-gold" href="https://luna-kakomirai.stores.jp/items/6afacbb24d873b9a5e90e441" target="_blank" rel="noopener">
             <svg aria-hidden="true"><use href="#i-doc"/></svg>STORESで鑑定書を申し込む
           </a>
           <p class="offer-sub">STORESの購入ページへ移動します</p>
         </div>
       </article>
+
+      <!-- 年間鑑定書カード（購入リンクは出品完了まで https://luna-kakomirai.stores.jp/items/6b062d143bd9dabb7f893181 の仮値） -->
+      <article class="glass offer-card offer-annual reveal" data-delay="2" id="offer-annual">
+        <div class="offer-media portrait">
+          <img src="month-01-garnet-A.jpg" alt="1月の誕生石ガーネットのイラスト" width="928" height="1152" loading="lazy">
+        </div>
+        <div class="offer-body">
+          <h3 class="offer-title"><small>ANNUAL REPORT</small>ペンタステラ星秘術 年間鑑定書</h3>
+          <p class="offer-copy">1年間の星の流れと動くタイミングを、月ごと・テーマごとに読み解く保存版</p>
+          <ul class="specs">
+            <li><span class="k">形式</span><span class="v">PDF</span></li>
+            <li><span class="k">ページ数</span><span class="v">45〜55ページ</span></li>
+          </ul>
+          <p class="price">¥15,000</p>
+          <p class="price-note">ペンタステラ星秘術 年間鑑定書（PDF）</p>
+          <div class="offer-fit">
+            <p class="offer-fit-h">向いている方</p>
+            <ul>
+              <li>2027年全体の流れや転機を見通したい方</li>
+              <li>仕事・人間関係・暮らしの節目を計画的に迎えたい方</li>
+              <li>手元に残して何度も読み返せる詳しい鑑定書がほしい方</li>
+            </ul>
+          </div>
+          <p class="offer-closing">1年の巡りを知ることで、日々の選択に静かな道しるべが生まれます。星の流れとともに、穏やかな1年をお迎えください。</p>
+          <a class="btn btn-gold" href="https://luna-kakomirai.stores.jp/items/6b062d143bd9dabb7f893181">
+            <svg aria-hidden="true"><use href="#i-doc"/></svg>年間鑑定書（出品準備中）
+          </a>
+          <p class="offer-sub">出品が整い次第、こちらからお申し込みいただけます。</p>
+        </div>
+      </article>
+      </div>
+
+      <!-- 収益枠（JOB-CC-49）：リンク先はプレースホルダ。公開前に差し替え -->
+      <div class="aff-group">
+        <aside class="aff-card reveal" id="aff-vernis" aria-labelledby="aff-vernis-title">
+          <h3 id="aff-vernis-title">もっと深く、今すぐ相談したい方へ</h3>
+          <p class="aff-copy">鑑定書は、時間をかけてじっくり読み解く形です。それとは別に、今すぐ誰かに話を聞いてほしいときは、電話占いのヴェルニという選択肢もあります。ヴェルニはルナのサービスではなく、外部のサービスです。気になる方は、ご自身のペースで内容をご確認ください。</p>
+          <a class="btn btn-ghost" href="https://vernis.co.jp/" target="_blank" rel="sponsored noopener">電話占いヴェルニを見る
+            <svg aria-hidden="true"><use href="#i-ext"/></svg>
+          </a>
+          <p class="aff-pr">広告（PR）を含みます</p>
+        </aside>
+
+        <aside class="aff-card reveal" data-delay="1" id="aff-birthstone" aria-labelledby="aff-birthstone-title">
+          <h3 id="aff-birthstone-title">あなたの誕生石</h3>
+          <p class="aff-copy">誕生石は、生まれた月で決まります。ルナの毎日の投稿や動画でも、誕生石をご紹介しています。実際の品物を見てみたい方は、こちらからご覧いただけます。</p>
+          <a class="btn btn-ghost" href="https://px.a8.net/svt/ejp?a8mat=4BGK7Y+58QGBE+5N7K+5YJRM" target="_blank" rel="sponsored noopener">誕生石のアイテムを見る
+            <svg aria-hidden="true"><use href="#i-ext"/></svg>
+          </a>
+          <p class="aff-pr">広告（PR）を含みます</p>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -584,7 +769,12 @@
       <p class="eyebrow reveal">Links</p>
       <h2 id="links-title" class="reveal" data-delay="1">リンク集</h2>
       <nav class="links-grid" aria-label="星読みのルナ 外部リンク">
-        <a class="glass link-card primary reveal" href="https://luna-kakomirai.stores.jp/items/6afacbb24d873b9a5e90e441" target="_blank" rel="noopener">
+        <a class="glass link-card primary reveal" href="https://line.me/R/ti/p/@408lstfr" target="_blank" rel="noopener">
+          <span class="ic"><svg aria-hidden="true"><use href="#i-chat"/></svg></span>
+          <span class="txt"><span class="name">LINE公式アカウント</span><span class="desc">@408lstfr ・ LINE限定の無料ミニ鑑定</span></span>
+          <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="glass link-card reveal" href="https://luna-kakomirai.stores.jp/items/6afacbb24d873b9a5e90e441" target="_blank" rel="noopener">
           <span class="ic"><svg aria-hidden="true"><use href="#i-doc"/></svg></span>
           <span class="txt"><span class="name">鑑定書（STORES）</span><span class="desc">ペンタステラ星秘術 鑑定書 ¥5,000</span></span>
           <svg class="arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
